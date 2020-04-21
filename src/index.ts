@@ -1,8 +1,9 @@
-import { issueCommand, issue } from '@actions/core/lib/command';
+import { startGroup, endGroup } from '@actions/core';
+import { issueCommand } from '@actions/core/lib/command';
 import { CLIEngine } from 'eslint';
 
 const GitHubActionsReporter: CLIEngine.Formatter = (results) => {
-  issue('group', 'Lint Annotations');
+  startGroup('Lint Annotations');
 
   const errors = results.flatMap((result) =>
     result.messages.map((message) => ({
@@ -15,12 +16,11 @@ const GitHubActionsReporter: CLIEngine.Formatter = (results) => {
     }))
   );
 
-  for (const error of errors) {
-    const { message, properties } = error;
+  for (const { message, properties } of errors) {
     issueCommand('error', properties, message);
   }
 
-  issue('endgroup');
+  endGroup();
 
   return '';
 };
