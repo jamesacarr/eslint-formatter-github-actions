@@ -1,6 +1,7 @@
 # ESLint Reporter for GitHub Actions
 
 [![Test status](https://github.com/jamesacarr/eslint-formatter-github-actions/workflows/tests/badge.svg)](https://github.com/jamesacarr/eslint-formatter-github-actions/actions?query=workflow%3Atests)
+[![NPM badge](https://img.shields.io/npm/v/@jamesacarr/eslint-formatter-github-actions.svg)](https://www.npmjs.com/package/@jamesacarr/eslint-formatter-github-actions)
 
 A custom formatter for ESLint that creates annotations when run via GitHub Actions
 
