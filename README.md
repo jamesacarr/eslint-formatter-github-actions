@@ -11,7 +11,7 @@ A custom formatter for ESLint that creates annotations when run via GitHub Actio
 npm install -D @jamesacarr/eslint-formatter-github-actions
 ```
 
-Or, event better:
+Or, even better:
 
 ```sh
 yarn add -D @jamesacarr/eslint-formatter-github-actions
