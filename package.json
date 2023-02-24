@@ -25,35 +25,14 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "lint": "xo --fix",
-    "lint:ci": "xo",
+    "format": "yarn format:ci --write",
+    "format:ci": "prettier --check .",
+    "lint": "yarn lint:ci --fix",
+    "lint:ci": "eslint --ext js,cjs,mjs,jsx,ts,tsx .",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable && yarn build",
     "postpublish": "pinst --enable",
     "typecheck": "tsc --noEmit"
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "yarn lint"
-    ]
-  },
-  "prettier": {
-    "bracketSpacing": true,
-    "printWidth": 120,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "xo": {
-    "space": true,
-    "prettier": true,
-    "env": [
-      "es6",
-      "jest",
-      "node"
-    ],
-    "rules": {
-      "@typescript-eslint/prefer-readonly-parameter-types": 0
-    }
   },
   "dependencies": {
     "@actions/core": "^1.10.0"
@@ -63,11 +42,18 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@types/eslint": "^8.21.1",
     "@types/node": "^18.14.1",
-    "eslint": "^7.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-xo-space": "^0.34.0",
+    "eslint-config-xo-typescript": "^0.56.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-unicorn": "^45.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "pinst": "^3.0.0",
-    "typescript": "^4.9.5",
-    "xo": "^0.37.1"
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
   }
 }

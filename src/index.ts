@@ -1,6 +1,7 @@
 import { startGroup, endGroup } from '@actions/core';
 import { issueCommand } from '@actions/core/lib/command';
-import { ESLint, Linter } from 'eslint';
+
+import type { ESLint, Linter } from 'eslint';
 
 // https://eslint.org/docs/4.0.0/user-guide/configuring#configuring-rules
 // https://github.com/actions/toolkit/blob/main/docs/commands.md#log-level
@@ -11,11 +12,11 @@ const severityLabels: { [key in Linter.Severity]: string } = {
 };
 
 const GitHubActionsReporter: ESLint.Formatter = {
-  format: (results) => {
+  format(results) {
     startGroup('Lint Annotations');
 
-    const errors = results.flatMap((result) =>
-      result.messages.map((message) => ({
+    const errors = results.flatMap(result =>
+      result.messages.map(message => ({
         message: message.message,
         severity: severityLabels[message.severity],
         properties: {
@@ -36,4 +37,4 @@ const GitHubActionsReporter: ESLint.Formatter = {
   },
 };
 
-export = GitHubActionsReporter.format;
+export default GitHubActionsReporter.format;
