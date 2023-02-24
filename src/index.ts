@@ -21,8 +21,8 @@ const GitHubActionsReporter: ESLint.Formatter = {
         severity: severityLabels[message.severity],
         properties: {
           file: result.filePath,
-          line: message.line.toString(),
-          col: message.column.toString(),
+          line: message.line?.toString(),
+          col: message.column?.toString(),
         },
       }))
     );
